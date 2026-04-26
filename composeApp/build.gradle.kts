@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
-
+    alias(libs.plugins.kotlin.plugin.serialization)
 }
 
 kotlin {
@@ -25,6 +25,11 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation("io.ktor:ktor-client-cio:3.3.0")
+            implementation(libs.androidx.media3.exoplayer)
+            implementation(libs.androidx.media3.exoplayer.dash)
+            implementation(libs.androidx.media3.ui)
+            implementation(libs.androidx.media3.ui.compose.material3)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -38,6 +43,18 @@ kotlin {
             implementation(projects.shared)
             implementation(libs.coil3.coil.compose)
             implementation(libs.coil.network.okhttp)
+            implementation(project.dependencies.platform("androidx.compose:compose-bom:2025.10.00"))
+            implementation(libs.icons.lucide)
+            implementation(project.dependencies.platform("io.github.jan-tennert.supabase:bom:3.2.5"))
+            implementation(libs.postgrest.kt)
+            implementation(libs.ktor.client.android)
+            implementation(libs.gotrue.kt)
+            implementation(libs.realtime.kt)
+            implementation(project.dependencies.platform("io.github.jan-tennert.supabase:bom:3.2.5"))
+            implementation(libs.supabase.postgrest.kt)
+            implementation(libs.auth.kt)
+            implementation(libs.supabase.realtime.kt)
+            implementation(libs.kotlinx.datetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -45,6 +62,7 @@ kotlin {
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
+            implementation("io.ktor:ktor-client-cio:3.3.0")
         }
     }
 }
@@ -86,7 +104,7 @@ android {
         debugImplementation(compose.uiTooling)
         implementation("com.squareup.retrofit2:retrofit:3.0.0")
         implementation("com.squareup.retrofit2:converter-scalars:3.0.0")
-        implementation("androidx.core:core-splashscreen:1.0.0")
+
     }
     compose.desktop {
         application {

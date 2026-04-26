@@ -1,35 +1,25 @@
 package com.github.kelvenfellipe.listen
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import listen.components.Music.SongDisplay
-import listen.components.Music.songs
+import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.postgrest.Postgrest
+import listen.components.Screens.MainScreen
+
+val supabase = createSupabaseClient(
+    supabaseUrl = "https://wbtdpuzlsjnlgogxaorl.supabase.co",
+    supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndidGRwdXpsc2pubGdvZ3hhb3JsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkyNjc2OTIsImV4cCI6MjA3NDg0MzY5Mn0.IPM0Ol1aMnqPNUJ43wdw0U7ua_34UG91-i8Bcmt9pgI"
+) {
+    install(Postgrest)
+}
 
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = "listen",
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black)
-                .padding(8.dp)
-        ) {
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(songs) { song -> SongDisplay(song) }
-            }
-        }
+
+        MainScreen()
 
     }
 }

@@ -1,13 +1,11 @@
 package model
 
 import kotlinx.serialization.Serializable
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
+import java.util.*
 
 @Serializable
-@OptIn(ExperimentalUuidApi::class)
 data class Album(
-    val id: Uuid = Uuid.random(),
+    val id: String = UUID.randomUUID().toString(),
     val name: String,
 //    val songs: List<Song>,
     val playCount: Int = 0

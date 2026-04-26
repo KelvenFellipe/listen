@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.Listen" parent="Theme.SplashScreen">
-        <item name="android:windowSplashScreenBackground">@color/ic_launcher_background</item>
-    </style>
+    <!--    <style name="Theme.Listen" parent="Theme.SplashScreen">-->
+    <!--        <item name="android:windowSplashScreenBackground">@color/ic_launcher_background</item>-->
+    <!--    </style>-->
 </resources>

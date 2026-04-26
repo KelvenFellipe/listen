@@ -9,7 +9,7 @@ group = "com.github.kelvenfellipe.listen"
 version = "1.0.0"
 application {
     mainClass.set("com.github.kelvenfellipe.listen.ApplicationKt")
-    
+
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
@@ -24,4 +24,9 @@ dependencies {
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+    implementation(platform("io.github.jan-tennert.supabase:bom:3.2.5"))
+    implementation(libs.postgrest.kt)
+    implementation(libs.ktor.client.android)
+    implementation("io.github.jan-tennert.supabase:gotrue-kt:1.0.0")
+    implementation("io.github.jan-tennert.supabase:realtime-kt:1.0.0")
 }
